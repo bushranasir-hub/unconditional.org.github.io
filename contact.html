@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Un-conditional Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --pink: #F06292; /* UPDATED */
+  --pink-light: #f78fb3;
+  --pink-glow: rgba(240, 98, 146, 0.25);
+  --dark: #1e1e1e;
+  --charcoal: #2d2d2d;
+  --gray: #4a4a4a;
+  --light-gray: #f5f5f5;
+  --white: #ffffff;
+
+
+      /* Dark tones */
+      --dark:#1a1a1a;
+      --darker:#111;
+      --darkest:#0c0c0c;
+      --card-dark:#1f1f1f;
+      --border-dark:rgba(255,255,255,0.07);
+      --muted-dark:rgba(255,255,255,0.52);
+
+      /* Light tones */
+      --light:#f7f7f8;
+      --light-mid:#efefef;
+      --light-border:#e0e0e4;
+      --light-card:#ffffff;
+      --muted-light:#7a7a8a;
+      --text-light:#1e1e28;
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;overflow-x:hidden;}
+
+    /* CURSOR */
+    .cursor{width:12px;height:12px;background:var(--pink);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;}
+    .cursor-ring{width:38px;height:38px;border:1.5px solid var(--pink);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:opacity .3s;}
+
+    /* ── NAVBAR ── */
+/* NAVBAR */
+  nav {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .logo-img {
+    height: 58px;
+  }
+
+  /* HIDE NAV LINKS (no space on mobile) */
+  .nav-links {
+    display: none;
+  }
+
+  /* HERO FIX */
+  .hero {
+    padding: 120px 20px 60px;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-p, .btn-g {
+    width: 100%;
+    justify-content: center;
+  }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;background:rgba(26,26,26,0.88);backdrop-filter:blur(22px);border-bottom:1px solid var(--border-dark);transition:background .4s;}
+    nav.scrolled{background:rgba(12,12,12,0.97);}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-badge{width:44px;height:44px;background:var(--pink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#fff;box-shadow:0 0 24px var(--pink-glow);flex-shrink:0;}
+    .logo-text{font-size:16px;font-weight:600;color:#fff;letter-spacing:-.3px;}
+    .logo-text em{color:var(--pink);font-style:normal;}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,.62);font-size:14px;font-weight:500;letter-spacing:.3px;transition:color .3s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+    .nav-links a:hover{color:#fff;}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+    .nav-links a.active{color:#fff;}
+    .nav-cta{background:var(--pink)!important;color:#fff!important;padding:10px 22px;border-radius:50px;font-weight:600!important;box-shadow:0 4px 20px var(--pink-glow)!important;transition:background .3s,transform .2s!important;}
+    .nav-cta::after{display:none!important;}
+    .nav-cta:hover{background:var(--pink-light)!important;transform:translateY(-2px)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .hamburger span{width:24px;height:2px;background:#fff;display:block;transition:all .3s;}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(12,12,12,0.98);backdrop-filter:blur(22px);padding:24px 20px;z-index:99;border-bottom:1px solid var(--border-dark);flex-direction:column;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{text-decoration:none;color:rgba(255,255,255,.75);font-size:16px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--border-dark);transition:color .2s;}
+    .mobile-menu a:hover{color:var(--pink);}
+    .mobile-menu a.m-cta{margin-top:16px;background:var(--pink);color:#fff;text-align:center;border-radius:50px;padding:14px;border:none;font-size:15px;font-weight:600;}
+
+    /* ── PAGE HERO  (dark) ── */
+    .page-hero{min-height:56vh;padding:130px 48px 90px;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
+    .ph-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 85% 20%,rgba(240,98,146,.16) 0%,transparent 60%),radial-gradient(ellipse 45% 60% at 5% 85%,rgba(240,98,146,.09) 0%,transparent 55%),linear-gradient(155deg,#161616 0%,#0c0c0c 100%);}
+    .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:56px 56px;}
+    .ph-orb{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(240,98,146,.13) 0%,transparent 70%);right:-100px;top:-140px;animation:orbFloat 10s ease-in-out infinite;}
+    @keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+
+    /* Envelope deco */
+    .ph-deco{position:absolute;right:7%;top:50%;transform:translateY(-50%);opacity:0;animation:fadeInR 1s .6s forwards;}
+    @keyframes fadeInR{from{opacity:0;transform:translateY(-50%) translateX(36px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+    .envelope-card{width:220px;background:rgba(255,255,255,.05);border:1px solid var(--pink-border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+    .env-flap{height:70px;background:linear-gradient(135deg,rgba(240,98,146,.25),rgba(240,98,146,.1));display:flex;align-items:center;justify-content:center;font-size:36px;border-bottom:1px solid var(--pink-border);}
+    .env-body{padding:20px;}
+    .env-line{height:8px;border-radius:4px;background:rgba(255,255,255,.1);margin-bottom:8px;}
+    .env-line:last-child{width:60%;margin:0;}
+
+    .ph-content{position:relative;z-index:2;max-width:1200px;width:100%;}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:20px;opacity:0;animation:fadeUp .7s .15s forwards;}
+    .breadcrumb a{color:var(--pink);text-decoration:none;}
+    .breadcrumb span{color:rgba(255,255,255,.22);}
+    .ph-title{font-family:'Playfair Display',serif;font-size:clamp(52px,7.5vw,106px);font-weight:900;line-height:.95;letter-spacing:-3px;opacity:0;animation:fadeUp .9s .3s forwards;}
+    .ph-title .outline{-webkit-text-stroke:2px rgba(255,255,255,.28);color:transparent;}
+    .ph-title .pink{color:var(--pink);}
+    .ph-sub{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,.55);max-width:500px;line-height:1.75;margin-top:22px;opacity:0;animation:fadeUp .8s .5s forwards;}
+    .ph-line{width:56px;height:3px;background:var(--pink);margin-top:26px;border-radius:2px;opacity:0;animation:fadeUp .7s .65s forwards;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── CONTACT CARDS  (light section) ── */
+    .s-cards{padding:90px 48px;background:var(--light);}
+    .cards-inner{max-width:1200px;margin:0 auto;}
+    .sc-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px;}
+    .sc-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,44px);font-weight:700;line-height:1.2;letter-spacing:-1px;color:var(--text-light);margin-bottom:48px;}
+    .sc-heading span{color:var(--pink);}
+
+    .info-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .info-card{background:var(--light-card);border:1px solid var(--light-border);border-radius:20px;padding:32px 28px;transition:transform .35s,border-color .35s,box-shadow .35s;position:relative;overflow:hidden;}
+    .info-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+    .info-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.1);border-color:var(--pink-border);}
+    .info-card:hover::before{transform:scaleX(1);}
+    .ic-icon{width:52px;height:52px;border-radius:14px;background:var(--pink-soft);border:1px solid var(--pink-border);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;transition:transform .3s,background .3s;}
+    .info-card:hover .ic-icon{transform:scale(1.1) rotate(5deg);background:rgba(240,98,146,.18);}
+    .ic-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+    .ic-value{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text-light);line-height:1.35;margin-bottom:6px;}
+    .ic-sub{font-size:13px;color:var(--muted-light);line-height:1.6;}
+    .ic-link{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:13px;font-weight:600;color:var(--pink);text-decoration:none;transition:gap .25s;}
+    .ic-link:hover{gap:9px;}
+    .ic-link svg{transition:transform .25s;}
+    .ic-link:hover svg{transform:translateX(3px);}
+
+    /* ── CONTACT FORM + MAP  (white) ── */
+    .s-form{padding:100px 48px;background:#fff;}
+    .s-form::before{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--pink-border),transparent);margin-bottom:0;}
+    .form-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 440px;gap:64px;align-items:start;}
+
+    .form-left{}
+    .fl-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px;}
+    .fl-heading{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,50px);font-weight:700;line-height:1.15;letter-spacing:-1.5px;color:var(--text-light);margin-bottom:14px;}
+    .fl-heading span{color:var(--pink);}
+    .fl-sub{font-size:15px;color:var(--muted-light);line-height:1.8;margin-bottom:36px;max-width:480px;}
+
+    .contact-form{display:flex;flex-direction:column;gap:18px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+    .form-group{display:flex;flex-direction:column;gap:7px;}
+    .form-group label{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-light);}
+    .form-group input,.form-group textarea,.form-group select{
+      background:#f7f7f8;border:1.5px solid var(--light-border);
+      border-radius:12px;padding:14px 18px;
+      color:var(--text-light);font-size:15px;font-family:'DM Sans',sans-serif;
+      outline:none;transition:border-color .3s,background .3s,box-shadow .3s;
+      width:100%;
+    }
+    .form-group input::placeholder,.form-group textarea::placeholder{color:#b0b0bc;}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+      border-color:var(--pink);background:#fff;
+      box-shadow:0 0 0 4px rgba(240,98,146,.12);
+    }
+    .form-group textarea{resize:vertical;min-height:130px;}
+    .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0b0bc' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;}
+
+    .form-check{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--muted-light);line-height:1.6;cursor:pointer;}
+    .form-check input[type="checkbox"]{width:18px;height:18px;accent-color:var(--pink);flex-shrink:0;margin-top:1px;cursor:pointer;}
+
+    .btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--pink);color:#fff;border:none;padding:16px 36px;border-radius:50px;font-weight:600;font-size:16px;font-family:'DM Sans',sans-serif;box-shadow:0 8px 28px var(--pink-glow);cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;width:100%;}
+    .btn-submit:hover{transform:translateY(-3px);background:var(--pink-light);box-shadow:0 14px 40px rgba(240,98,146,.45);}
+    .btn-submit svg{transition:transform .25s;}
+    .btn-submit:hover svg{transform:translateX(4px);}
+
+    /* Success state */
+    .form-success{display:none;text-align:center;padding:48px 24px;}
+    .form-success .success-icon{font-size:56px;margin-bottom:16px;}
+    .form-success h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text-light);margin-bottom:10px;}
+    .form-success p{font-size:15px;color:var(--muted-light);line-height:1.7;}
+
+    /* Right side info panel */
+    .form-right{}
+    .fr-card{background:var(--light);border:1px solid var(--light-border);border-radius:20px;padding:36px 32px;margin-bottom:20px;}
+    .fr-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text-light);margin-bottom:18px;}
+    .fr-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+    .fr-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--muted-light);line-height:1.6;}
+    .fr-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:5px;}
+    .fr-list li strong{color:var(--text-light);display:block;font-weight:600;margin-bottom:1px;}
+
+    .hours-grid{display:flex;flex-direction:column;gap:10px;}
+    .hour-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--light-border);}
+    .hour-row:last-child{border-bottom:none;}
+    .hour-day{color:var(--muted-light);}
+    .hour-time{font-weight:600;color:var(--text-light);}
+    .hour-badge{background:rgba(240,98,146,.12);color:var(--pink);padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;}
+
+    /* ── ADDRESS / MAP SECTION  (light grey) ── */
+    .s-location{padding:90px 48px;background:var(--light-mid);}
+    .loc-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+    .loc-info{}
+    .loc-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:12px;}
+    .loc-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,44px);font-weight:700;line-height:1.2;letter-spacing:-1px;color:var(--text-light);margin-bottom:22px;}
+    .loc-address{background:#fff;border:1px solid var(--light-border);border-radius:18px;padding:28px 30px;margin-bottom:22px;}
+    .la-row{display:flex;align-items:flex-start;gap:13px;padding:10px 0;border-bottom:1px solid var(--light-border);}
+    .la-row:last-child{border-bottom:none;}
+    .la-icon{width:34px;height:34px;border-radius:10px;background:var(--pink-soft);border:1px solid var(--pink-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .la-icon svg{color:var(--pink);}
+    .la-text{}
+    .la-key{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-light);margin-bottom:2px;}
+    .la-val{font-size:14px;font-weight:500;color:var(--text-light);line-height:1.5;}
+    .la-val a{color:var(--pink);text-decoration:none;}
+    .la-val a:hover{text-decoration:underline;}
+
+    .loc-map{border-radius:22px;overflow:hidden;border:1px solid var(--light-border);box-shadow:0 12px 40px rgba(0,0,0,.1);position:relative;}
+    .map-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e8e8ef 0%,#d8d8e4 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .map-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(240,98,146,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(240,98,146,.08) 1px,transparent 1px);background-size:40px 40px;}
+    .map-pin-wrap{position:relative;z-index:1;text-align:center;}
+    .map-pin{width:64px;height:64px;background:var(--pink);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;margin:0 auto 4px;box-shadow:0 8px 28px var(--pink-glow);animation:pinBounce 2s ease-in-out infinite;}
+    @keyframes pinBounce{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-8px)}}
+    .map-pin-inner{transform:rotate(45deg);font-size:26px;}
+    .map-city{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text-light);margin-top:16px;}
+    .map-state{font-size:13px;color:var(--muted-light);margin-top:4px;}
+    .map-overlay-link{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(255,255,255,.95) 0%,transparent 100%);padding:20px;text-align:center;}
+    .map-cta-link{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;text-decoration:none;padding:10px 22px;border-radius:50px;font-size:13px;font-weight:600;box-shadow:0 4px 16px var(--pink-glow);transition:transform .25s,background .25s;}
+    .map-cta-link:hover{transform:translateY(-2px);background:var(--pink-light);}
+
+    /* ── FAQ  (white) ── */
+    .s-faq{padding:90px 48px;background:#fff;}
+    .faq-inner{max-width:780px;margin:0 auto;}
+    .faq-header{text-align:center;margin-bottom:52px;}
+    .faq-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px;}
+    .faq-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;color:var(--text-light);}
+
+    .faq-item{border:1px solid var(--light-border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .3s;}
+    .faq-item.open{border-color:var(--pink-border);}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;color:var(--text-light);font-size:15px;font-weight:600;line-height:1.4;transition:background .25s;}
+    .faq-q:hover{background:var(--light);}
+    .faq-item.open .faq-q{background:rgba(240,98,146,.05);}
+    .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--light-mid);border:1px solid var(--light-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;transition:background .3s,transform .3s;}
+    .faq-item.open .faq-icon{background:var(--pink);border-color:var(--pink);transform:rotate(45deg);}
+    .faq-icon svg{color:var(--muted-light);transition:color .3s;}
+    .faq-item.open .faq-icon svg{color:#fff;}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+    .faq-a-inner{padding:0 24px 20px;font-size:14.5px;color:var(--muted-light);line-height:1.8;}
+    .faq-item.open .faq-a{max-height:200px;}
+
+    /* ── PINK CTA STRIP ── */
+    .s-cta-strip{padding:80px 48px;background:var(--pink);position:relative;overflow:hidden;}
+    .s-cta-strip::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.06'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");}
+    .strip-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;text-align:center;}
+    .strip-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px;}
+    .strip-sub{font-size:17px;opacity:.88;line-height:1.7;max-width:520px;margin:0 auto 36px;}
+    .strip-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-white{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--pink);text-decoration:none;padding:15px 30px;border-radius:50px;font-weight:700;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.15);transition:transform .25s,box-shadow .25s;}
+    .btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.2);}
+    .btn-white svg{transition:transform .25s;}
+    .btn-white:hover svg{transform:translateX(4px);}
+    .btn-outline-white{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;text-decoration:none;padding:15px 30px;border-radius:50px;font-weight:500;font-size:15px;border:2px solid rgba(255,255,255,.55);transition:background .3s,border-color .3s,transform .25s;}
+    .btn-outline-white:hover{background:rgba(255,255,255,.15);border-color:#fff;transform:translateY(-3px);}
+
+    /* ── FOOTER  (dark) ── */
+    footer{background:#0a0a0a;border-top:1px solid var(--border-dark);padding:60px 48px 30px;}
+    .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+    .ft-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+    .ft-brand p{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7;max-width:270px;}
+    .ft-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:16px;}
+    .ft-col ul{list-style:none;}
+    .ft-col li{margin-bottom:9px;}
+    .ft-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:13px;transition:color .3s;}
+    .ft-col a:hover{color:var(--pink);}
+    .ft-bottom{border-top:1px solid var(--border-dark);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .ft-bottom p{font-size:12px;color:rgba(255,255,255,.26);}
+    .socials{display:flex;gap:10px;}
+    .soc-a{width:34px;height:34px;background:rgba(255,255,255,.04);border:1px solid var(--border-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.42);text-decoration:none;font-size:12px;font-weight:600;transition:all .3s;}
+    .soc-a:hover{background:rgba(240,98,146,.15);border-color:var(--pink);color:var(--pink);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
+    .reveal.on{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .form-wrap{grid-template-columns:1fr;}
+      .form-right{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+      .info-cards{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:900px){
+      nav{padding:0 20px;}
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .page-hero{padding:110px 20px 60px;}
+      .ph-deco{display:none;}
+      .s-cards,.s-form,.s-location,.s-faq,.s-cta-strip{padding:64px 20px;}
+      .loc-inner{grid-template-columns:1fr;gap:36px;}
+      .form-row{grid-template-columns:1fr;}
+    }
+    @media(max-width:680px){
+      .info-cards{grid-template-columns:1fr 1fr;}
+      .form-right{grid-template-columns:1fr;}
+      .ft-grid{grid-template-columns:1fr 1fr;}
+      .ft-brand{grid-column:1/-1;}
+      footer{padding:48px 20px 24px;}
+    }
+    @media(max-width:480px){
+      .info-cards{grid-template-columns:1fr;}
+      .ft-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/16bc2a_3ea02dd17ffe4ce08f44b77e73fc870f~mv2.png" alt="Un-conditional Inc Logo" class="logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="purpose.html">Our Purpose</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="events.html">Events</a></li>
+
+    <li><a href="sponsors.html">Sponsors</a></li>
+    <li><a href="contact.html" class="active nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="purpose.html">Our Purpose</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+
+  <a href="sponsors.html">Sponsors</a>
+  <a href="contact.html" class="m-cta">Contact Us</a>
+</div>
+
+<!-- PAGE HERO (dark) -->
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="ph-grid"></div>
+  <div class="ph-orb"></div>
+
+  <div class="ph-deco">
+    <div class="envelope-card">
+      <div class="env-flap">✉️</div>
+
+      <div class="env-body">
+        <div class="env-line"></div>
+        <div class="env-line"></div>
+        <div class="env-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,.62)">Contact Us</span>
+    </div>
+    <h1 class="ph-title">
+      Let's <span class="pink">Con</span><span class="outline">nect.</span>
+    </h1>
+    <p class="ph-sub">We'd love to hear from you — whether you're seeking support, looking to volunteer, or wanting to partner with us. Every message matters.</p>
+    <div class="ph-line"></div>
+  </div>
+</section>
+
+<!-- CONTACT CARDS (light) -->
+<section class="s-cards">
+  <div class="cards-inner">
+    <div class="reveal">
+      <p class="sc-label">Reach Us</p>
+      <h2 class="sc-heading">Ways to Get in <span>Touch</span></h2>
+    </div>
+    <div class="info-cards">
+
+      <div class="info-card reveal d1">
+
+        <div class="ic-label">Phone</div>
+        <div class="ic-value">404-480-3113</div>
+        <div class="ic-sub">Call or text us Monday through Friday during business hours.</div>
+        <a href="tel:4044803113" class="ic-link">
+          Call Now <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="info-card reveal d2">
+
+        <div class="ic-label">Email</div>
+        <div class="ic-value">info@un-conditionalinc.org</div>
+        <div class="ic-sub">We aim to respond to all emails within 1–2 business days.</div>
+        <a href="mailto:info@un-conditionalinc.org" class="ic-link">
+          Send Email <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="info-card reveal d3">
+
+        <div class="ic-label">Mailing Address</div>
+        <div class="ic-value">P.O. Box 723891</div>
+        <div class="ic-sub">Atlanta, Georgia 31139. Donations and sponsorship materials are welcome.</div>
+        <a href="#location" class="ic-link">
+          View on Map <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="info-card reveal d4">
+
+        <div class="ic-label">Website</div>
+        <div class="ic-value">un-conditionalinc.org</div>
+        <div class="ic-sub">Visit our website for the latest news, events, and resources.</div>
+        <a href="https://www.un-conditionalinc.org" target="_blank" class="ic-link">
+          Visit Site <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + SIDEBAR (white) -->
+<section class="s-form">
+  <div class="form-wrap">
+
+    <!-- Left: Form -->
+    <div class="form-left reveal">
+      <p class="fl-label">Send a Message</p>
+      <h2 class="fl-heading">We're Here to <span>Help You.</span></h2>
+      <p class="fl-sub">Fill out the form below and a member of our team will get back to you. No question is too small — we're here for you, unconditionally.</p>
+
+      <div id="contactFormWrap">
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="First name" required/>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Last name" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" required/>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="(000) 000-0000"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reason">Reason for Contact</label>
+            <select id="reason" required>
+              <option value="" disabled selected>Select a reason…</option>
+              <option>I'm a teen parent seeking support</option>
+              <option>I'd like to volunteer</option>
+              <option>I'm interested in sponsoring</option>
+              <option>I want to donate</option>
+              <option>Media / Press inquiry</option>
+              <option>General question</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" placeholder="Tell us how we can help you…" required></textarea>
+          </div>
+
+          <label class="form-check">
+            <input type="checkbox" required/>
+            I agree to be contacted by Un-conditional Inc. regarding my inquiry. I understand my information will be kept confidential.
+          </label>
+
+          <button type="submit" class="btn-submit">
+            Send Message
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out to Un-conditional Inc. We've received your message and will get back to you within 1–2 business days.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Info cards -->
+    <div class="form-right reveal d2">
+
+      <div class="fr-card">
+        <div class="fr-card-title">What Happens Next?</div>
+        <ul class="fr-list">
+          <li>
+            <span class="fr-dot"></span>
+            <div><strong>We receive your message</strong>Your inquiry is sent directly to our team.</div>
+          </li>
+          <li>
+            <span class="fr-dot"></span>
+            <div><strong>We review &amp; respond</strong>A team member will reach out within 1–2 business days.</div>
+          </li>
+          <li>
+            <span class="fr-dot"></span>
+            <div><strong>We connect you to the right path</strong>Whether it's support, volunteering, or sponsorship — we'll guide you to the right place.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="fr-card">
+        <div class="fr-card-title">Business Hours</div>
+        <div class="hours-grid">
+          <div class="hour-row">
+            <span class="hour-day">Monday – Wednesday</span>
+            <span class="hour-time">9 AM – 5 PM</span>
+          </div>
+          <div class="hour-row">
+            <span class="hour-day">Thursday</span>
+            <span class="hour-time">9 AM – 6 PM</span>
+          </div>
+          <div class="hour-row">
+            <span class="hour-day">Friday</span>
+            <span class="hour-time">9 AM – 3 PM</span>
+          </div>
+          <div class="hour-row">
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / MAP (light grey) -->
+<section class="s-location" id="location">
+  <div class="loc-inner">
+    <div class="loc-info reveal">
+      <p class="loc-label">Find Us</p>
+      <h2 class="loc-heading">Serving Metro Atlanta Area</h2>
+      <div class="loc-address">
+        <div class="la-row">
+          <div class="la-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="la-text">
+            <div class="la-key">Mailing Address</div>
+            <div class="la-val">P.O. Box 723891, Atlanta, GA 31139</div>
+          </div>
+        </div>
+        <div class="la-row">
+          <div class="la-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.4 2 2 0 0 1 3.53 1.23h3a2 2 0 0 1 2 1.72c.13 1.03.37 2.04.72 3.02a2 2 0 0 1-.45 2.11L7.91 9.01a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.98.35 1.99.59 3.02.72A2 2 0 0 1 21.93 16.92z"/></svg>
+          </div>
+          <div class="la-text">
+            <div class="la-key">Phone</div>
+            <div class="la-val"><a href="tel:4044803113">404-480-3113</a></div>
+          </div>
+        </div>
+        <div class="la-row">
+          <div class="la-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="la-text">
+            <div class="la-key">Email</div>
+            <div class="la-val"><a href="mailto:info@un-conditionalinc.org">info@un-conditionalinc.org</a></div>
+          </div>
+        </div>
+        <div class="la-row">
+          <div class="la-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="la-text">
+            <div class="la-key">Website</div>
+            <div class="la-val"><a href="https://www.un-conditionalinc.org" target="_blank">www.un-conditionalinc.org</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loc-map reveal d2">
+      <div class="map-placeholder">
+        <div class="map-grid-bg"></div>
+        <div class="map-pin-wrap">
+          <div class="map-pin"><div class="map-pin-inner"></div></div>
+          <div class="map-city">Atlanta</div>
+          <div class="map-state">Georgia, USA</div>
+        </div>
+        <div class="map-overlay-link">
+          <a href="https://maps.google.com/?q=Atlanta,+GA" target="_blank" class="map-cta-link">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (white) -->
+<section class="s-faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <p class="faq-label">Common Questions</p>
+      <h2 class="faq-heading">Frequently Asked</h2>
+    </div>
+
+    <div id="faqList">
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Who can receive support from Un-conditional Inc.?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Our resources are available to pregnant teens and parenting teens — regardless of age, race, background, or circumstance. We provide support without conditions or judgment.</div></div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Are all resources really free?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — 100%. Every resource, program, workshop, and service we offer is provided at absolutely no cost to the families we serve. This is made possible through the generosity of our sponsors, donors, and volunteers.</div></div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How can I volunteer with Un-conditional Inc.?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">We welcome volunteers (18 and older) who share our passion for empowering teen families! Simply fill out the contact form above, select "I'd like to volunteer," and tell us about your skills and availability. We'll reach out to match you with the right opportunity.</div></div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How can my company become a corporate sponsor?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">We offer several sponsorship tiers with different levels of visibility and involvement. Visit our Sponsors page for more details, or contact us directly and we'll send you our sponsorship package with all the information you need to get started.</div></div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is Un-conditional Inc. a registered 501(c)(3) nonprofit?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Un-conditional Inc. is a registered 501(c)(3) nonprofit organization • EIN: 33-2817659, which means all donations are tax-deductible to the fullest extent permitted by law. We have been operating since 2015.</div></div>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What areas do you serve?
+          <div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">We partner with local organizations throughout Georgia to serve the greater Metro Atlanta area, including Fulton, Cobb, Douglas, Paulding, Dekalb, Clayton, and surrounding counties.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PINK CTA STRIP -->
+<section class="s-cta-strip">
+  <div class="strip-inner reveal">
+    <h2 class="strip-title">Ready to Make a Difference?</h2>
+    <p class="strip-sub">Join our community of supporters, volunteers, and sponsors. Together, we build brighter futures for teen parents — unconditionally.</p>
+    <div class="strip-btns">
+      <a href="sponsors.html" class="btn-white">
+        View Sponsorships
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="about.html" class="btn-outline-white">Learn Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-brand-logo">
+        <img src="https://static.wixstatic.com/media/16bc2a_3ea02dd17ffe4ce08f44b77e73fc870f~mv2.png" alt="Un-conditional Inc Logo" class="logo-img">
+      </div>
+      <p>Providing resources and support to pregnant and parenting teens since 2015. Empowering young parents to thrive — unconditionally.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="purpose.html">Our Purpose</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Media</h4>
+      <ul>
+
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:4044803113">404-480-3113</a></li>
+        <li><a href="mailto:info@un-conditionalinc.org">info@un-conditionalinc.org</a></li>
+        <li><a href="#">P.O. Box 723891, Atlanta GA 31139</a></li>
+        <li><a href="https://www.un-conditionalinc.org" target="_blank">un-conditionalinc.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 Un-conditional Inc. All rights reserved. 501(c)(3) Nonprofit Organization • EIN: 33-2817659.</p>
+    <div class="socials">
+      <a href="#" class="soc-a">f</a>
+      <a href="#" class="soc-a">ig</a>
+      
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-6}px,${my-6}px)`;});
+  (function a(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;curR.style.transform=`translate(${rx-19}px,${ry-19}px)`;requestAnimationFrame(a);})();
+
+  // Navbar
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+  // Mobile menu
+  const ham=document.getElementById('ham'),mm=document.getElementById('mobileMenu');
+  ham.addEventListener('click',()=>{ham.classList.toggle('open');mm.classList.toggle('open');});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mm.classList.remove('open');}));
+
+  // Form submit
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('contactForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+  }
+
+  // FAQ accordion
+  function toggleFaq(el){
+    const item=el.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

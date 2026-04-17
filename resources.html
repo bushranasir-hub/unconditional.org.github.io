@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources | Un-conditional Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --pink: #F06292; /* UPDATED */
+  --pink-light: #f78fb3;
+  --pink-glow: rgba(240, 98, 146, 0.25);
+  --dark: #1e1e1e;
+  --charcoal: #2d2d2d;
+  --gray: #4a4a4a;
+  --light-gray: #f5f5f5;
+  --white: #ffffff;
+
+      /* pillar accent colours */
+      --health-c:   #E8357A;
+      --edu-c:      #3B82F6;
+      --life-c:     #10B981;
+      --parent-c:   #F59E0B;
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+
+    /* ── CURSOR ── */
+    .cursor{width:12px;height:12px;background:var(--pink);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999}
+    .cursor-ring{width:36px;height:36px;border:1.5px solid var(--pink);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:opacity .3s}
+
+    /* ── NAVBAR ── */
+ /* NAVBAR */
+  nav {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .logo-img {
+    height: 58px;
+  }
+
+  /* HIDE NAV LINKS (no space on mobile) */
+  .nav-links {
+    display: none;
+  }
+
+  /* HERO FIX */
+  .hero {
+    padding: 120px 20px 60px;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-p, .btn-g {
+    width: 100%;
+    justify-content: center;
+  }
+
+.s-tabs h2,
+.s-tabs p {
+  color: #1e1e1e;
+}
+
+
+.rc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: #1e1e1e; /* ADD THIS */
+}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;background:rgba(30,30,30,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .4s}
+    nav.scrolled{background:rgba(14,14,14,.97)}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-badge{width:44px;height:44px;background:var(--pink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#fff;box-shadow:0 0 22px var(--pink-glow);flex-shrink:0}
+    .logo-text{font-size:16px;font-weight:600;color:#fff;letter-spacing:-.3px}
+    .logo-text em{color:var(--pink);font-style:normal}
+    .nav-links{display:flex;gap:30px;list-style:none}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,.65);font-size:14px;font-weight:500;letter-spacing:.3px;transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--pink)!important;color:#fff!important;padding:10px 22px;border-radius:50px;font-weight:600!important;box-shadow:0 4px 18px var(--pink-glow);transition:background .3s,transform .2s!important}
+    .nav-cta::after{display:none!important}
+    .nav-cta:hover{background:var(--pink-light)!important;transform:translateY(-2px)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{width:24px;height:2px;background:#fff;display:block;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(14,14,14,.98);backdrop-filter:blur(20px);padding:24px 20px;z-index:99;border-bottom:1px solid var(--border);flex-direction:column}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{text-decoration:none;color:rgba(255,255,255,.75);font-size:16px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s}
+    .mobile-menu a:hover{color:var(--pink)}
+    .mobile-menu a.m-cta{margin-top:16px;background:var(--pink);color:#fff;text-align:center;border-radius:50px;padding:14px;border:none}
+
+    /* ── PAGE HERO ── */
+    .page-hero{min-height:52vh;padding:130px 48px 80px;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+    .ph-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 85% 20%,rgba(232,53,122,.14) 0%,transparent 60%),linear-gradient(160deg,#141414 0%,#0a0a0a 100%)}
+    .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:60px 60px}
+    .ph-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,53,122,.12) 0%,transparent 70%);right:-80px;top:-80px;animation:orbFloat 9s ease-in-out infinite}
+    @keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-22px) scale(1.04)}}
+
+    /* floating letter */
+    .ph-big-letter{position:absolute;right:48px;bottom:-20px;font-family:'Playfair Display',serif;font-size:clamp(160px,20vw,280px);font-weight:900;-webkit-text-stroke:1px rgba(232,53,122,.12);color:transparent;line-height:1;pointer-events:none;user-select:none;z-index:0}
+
+    .ph-content{position:relative;z-index:2;max-width:1200px;width:100%}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;opacity:0;animation:fadeUp .7s .15s forwards}
+    .breadcrumb a{color:var(--pink);text-decoration:none}
+    .breadcrumb span{color:rgba(255,255,255,.25)}
+    .ph-title{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,108px);font-weight:900;line-height:.95;letter-spacing:-3px;opacity:0;animation:fadeUp .9s .3s forwards}
+    .ph-title .outline{-webkit-text-stroke:2px rgba(255,255,255,.3);color:transparent}
+    .ph-title .pink{color:var(--pink)}
+    .ph-subtitle{font-size:17px;color:var(--muted);max-width:520px;margin-top:20px;line-height:1.7;opacity:0;animation:fadeUp .8s .5s forwards}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── PILLAR TABS ── */
+    .s-tabs{padding:80px 48px 0;background: var(--light-gray);position:relative}
+    .s-tabs::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent)}
+
+    .tabs-intro{max-width:1200px;margin:0 auto 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .tabs-intro-text .sec-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .tabs-intro-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700;letter-spacing:-1px;line-height:1.15}
+    .tabs-intro p{font-size:15px;color:var(--muted);max-width:400px;line-height:1.7;margin-top:8px}
+
+    .tab-pills{display:flex;gap:4px;background:#555;
+  border: 1px solid #e5e5e5;padding:6px;border-radius:16px;flex-shrink:0;flex-wrap:wrap}
+    .tab-pill{padding:10px 20px;border-radius:12px;border:none;background:transparent;color:rgba(255,255,255,.5);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .3s,color .3s,box-shadow .3s;white-space:nowrap}
+    .tab-pill.active{background: var(--pink);
+  color: #fff;box-shadow:0 4px 16px var(--pink-glow)}
+    .tab-pill[data-tab="edu"].active{background:var(--edu-c);box-shadow:0 4px 16px rgba(59,130,246,.3)}
+    .tab-pill[data-tab="life"].active{background:var(--life-c);box-shadow:0 4px 16px rgba(16,185,129,.3)}
+    .tab-pill[data-tab="parent"].active{background:var(--parent-c);box-shadow:0 4px 16px rgba(245,158,11,.3)}
+
+.res-card {
+  transition: all 0.3s ease;
+}   
+
+.res-card {
+  border-radius: 16px;
+}
+ /* ── TAB PANELS ── */
+    .tab-panels{max-width:1200px;margin:0 auto}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+
+    /* Panel hero band */
+    .panel-band{
+      border-radius:24px 24px 0 0;padding:48px;
+      position:relative;overflow:hidden;
+      display:grid;grid-template-columns:1fr auto;
+      align-items:center;gap:32px;
+    }
+    .panel-band.health {background:linear-gradient(135deg,rgba(232,53,122,.18) 0%,rgba(232,53,122,.06) 100%);border-bottom:2px solid rgba(232,53,122,.3)}
+    .panel-band.edu   {background:linear-gradient(135deg,rgba(59,130,246,.18) 0%,rgba(59,130,246,.06) 100%);border-bottom:2px solid rgba(59,130,246,.3)}
+    .panel-band.life  {background:linear-gradient(135deg,rgba(16,185,129,.18) 0%,rgba(16,185,129,.06) 100%);border-bottom:2px solid rgba(16,185,129,.3)}
+    .panel-band.parent{background:linear-gradient(135deg,rgba(245,158,11,.18) 0%,rgba(245,158,11,.06) 100%);border-bottom:2px solid rgba(245,158,11,.3)}
+
+    .pb-letter{font-family:'Playfair Display',serif;font-size:120px;font-weight:900;line-height:1;opacity:.12;position:absolute;right:48px;top:-10px;pointer-events:none}
+    .pb-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
+    .health .pb-label{color:var(--health-c)}
+    .edu    .pb-label{color:var(--edu-c)}
+    .life   .pb-label{color:var(--life-c)}
+    .parent .pb-label{color:var(--parent-c)}
+
+    .pb-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:12px}
+    .pb-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.7}
+
+    .pb-icon-wrap{width:100px;height:100px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:46px;flex-shrink:0}
+
+    /* Resource cards grid */
+    .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+    .res-card{background: #ffffff;
+  border: 1px solid #e5e5e5;padding:36px 32px;transition:background .3s;cursor:default;position:relative;overflow:hidden}
+    .res-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+    .res-card.edu::before{background:var(--edu-c)}
+    .res-card.life::before{background:var(--life-c)}
+    .res-card.parent::before{background:var(--parent-c)}
+    .res-card:hover{background: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);}
+    .res-card:hover::before{transform:scaleX(1)}
+
+    .rc-icon{font-size:28px;margin-bottom:16px;display:block}
+    .rc-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.3}
+    .rc-text{font-size:13.5px;color:#444;line-height:1.7}
+    .rc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+    .rc-tag{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:50px;background:rgba(232,53,122,.1);color:var(--health-c)}
+    .edu   .rc-tag{background:rgba(59,130,246,.1);color:var(--edu-c)}
+    .life  .rc-tag{background:rgba(16,185,129,.1);color:var(--life-c)}
+    .parent .rc-tag{background:rgba(245,158,11,.1);color:var(--parent-c)}
+
+    /* Bottom of panel */
+    .panel-footer{background:rgba(255,255,255,.02);border-radius:0 0 24px 24px;border:1px solid var(--border);border-top:none;padding:28px 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .pf-note{font-size:13px;color:var(--muted);max-width:500px;line-height:1.6}
+    .pf-note strong{color:#555;font-weight:600}
+
+    /* ── ALL-FREE BANNER ── */
+    .s-free{padding:0 48px 80px;background:var(--darker)}
+    .free-banner{max-width:1200px;margin:0 auto;border-radius:24px;background:var(--pink);padding:52px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;position:relative;overflow:hidden}
+    .free-banner::before{content:'FREE';position:absolute;right:56px;top:-20px;font-family:'Playfair Display',serif;font-size:180px;font-weight:900;color:rgba(255,255,255,.08);line-height:1;pointer-events:none}
+    .fb-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+    .fb-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:10px}
+    .fb-sub{font-size:15px;color:rgba(255,255,255,.8);line-height:1.6;max-width:460px}
+    .btn-white{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--pink);text-decoration:none;padding:16px 32px;border-radius:50px;font-weight:700;font-size:15px;white-space:nowrap;transition:transform .25s,box-shadow .25s;flex-shrink:0}
+    .btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+
+    /* ── HOW IT WORKS ── */
+    .s-how{padding:100px 48px;background:var(--dark);position:relative;overflow:hidden}
+    .s-how::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent)}
+    .how-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,53,122,.07) 0%,transparent 70%);right:-100px;bottom:-100px;pointer-events:none}
+
+    .how-header{text-align:center;max-width:560px;margin:0 auto 64px}
+    .sec-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+    .sec-heading{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700;letter-spacing:-1px;line-height:1.2}
+
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1200px;margin:0 auto;position:relative}
+    .steps::before{content:'';position:absolute;top:44px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--pink),rgba(232,53,122,.2),var(--pink));z-index:0}
+    .step{padding:0 24px 0;text-align:center;position:relative;z-index:1}
+    .step-num{width:88px;height:88px;border-radius:50%;background:var(--dark);border:2px solid var(--pink);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--pink);box-shadow:0 0 24px var(--pink-glow);transition:background .3s,transform .3s}
+    .step:hover .step-num{background:var(--pink);color:#fff;transform:scale(1.1)}
+    .step-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:10px}
+    .step-text{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+    /* ── PARTNERS STRIP ── */
+    .s-partners{padding:80px 48px;background:var(--darker);position:relative}
+    .s-partners::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent)}
+    .partners-header{text-align:center;max-width:560px;margin:0 auto 48px}
+
+    .partner-scroll{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .partner-chip{padding:10px 20px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--muted);transition:background .3s,border-color .3s,color .3s;cursor:default}
+    .partner-chip:hover{background:rgba(232,53,122,.1);border-color:rgba(232,53,122,.35);color:#fff}
+
+    /* ── CTA ── */
+    .s-cta{padding:100px 48px;background:var(--darkest);position:relative;overflow:hidden;text-align:center}
+    .cta-glow{position:absolute;width:700px;height:350px;background:radial-gradient(ellipse,rgba(232,53,122,.18) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+    .cta-inner{position:relative;z-index:2}
+    .cta-h{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+    .cta-h span{color:var(--pink)}
+    .cta-sub{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 40px;line-height:1.75}
+    .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--pink);color:#fff;text-decoration:none;padding:15px 30px;border-radius:50px;font-weight:600;font-size:15px;box-shadow:0 8px 30px var(--pink-glow);transition:transform .25s,box-shadow .25s,background .25s}
+    .btn-p:hover{transform:translateY(-3px);background:var(--pink-light);box-shadow:0 14px 40px rgba(232,53,122,.4)}
+    .btn-p svg{transition:transform .25s}
+    .btn-p:hover svg{transform:translateX(4px)}
+    .btn-g{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;text-decoration:none;padding:15px 30px;border-radius:50px;font-weight:500;font-size:15px;border:1.5px solid rgba(255,255,255,.2);transition:border-color .3s,background .3s,transform .25s}
+    .btn-g:hover{border-color:var(--pink);background:rgba(232,53,122,.08);transform:translateY(-3px)}
+
+    /* ── FOOTER ── */
+    footer{background:#0a0a0a;border-top:1px solid var(--border);padding:60px 48px 30px}
+    .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .ft-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .ft-brand p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:270px}
+    .ft-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:16px}
+    .ft-col ul{list-style:none}
+    .ft-col li{margin-bottom:9px}
+    .ft-col a{color:rgba(255,255,255,.42);text-decoration:none;font-size:13px;transition:color .3s}
+    .ft-col a:hover{color:var(--pink)}
+    .ft-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .ft-bottom p{font-size:12px;color:rgba(255,255,255,.28)}
+    .socials{display:flex;gap:10px}
+    .soc-a{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);text-decoration:none;font-size:12px;font-weight:600;transition:background .3s,border-color .3s,color .3s}
+    .soc-a:hover{background:rgba(232,53,122,.15);border-color:var(--pink);color:var(--pink)}
+
+    /* ── REVEAL ── */
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.on{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:960px){
+      nav{padding:0 20px}
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .page-hero{padding:110px 20px 60px}
+      .ph-big-letter{display:none}
+      .s-tabs,.s-free,.s-how,.s-partners,.s-cta{padding-left:20px;padding-right:20px}
+      .s-free{padding-bottom:60px}
+      .tabs-intro{flex-direction:column;align-items:flex-start}
+      .panel-band{grid-template-columns:1fr;gap:16px}
+      .pb-icon-wrap{width:64px;height:64px;font-size:28px}
+      .res-grid{grid-template-columns:1fr 1fr}
+      .steps::before{display:none}
+      .steps{grid-template-columns:1fr 1fr;gap:32px}
+      .step{padding:0}
+      .free-banner{grid-template-columns:1fr;gap:24px}
+      .free-banner::before{display:none}
+      .ft-grid{grid-template-columns:1fr 1fr}
+      .ft-brand{grid-column:1/-1}
+
+    }
+
+.s-partners { display: none; }
+    @media(max-width:600px){
+      .res-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .tab-pills{gap:4px}
+      .tab-pill{font-size:12px;padding:8px 14px}
+      .panel-band{padding:28px 20px}
+      .panel-footer{padding:20px}
+      .free-banner{padding:32px 24px}
+      .ft-grid{grid-template-columns:1fr}
+      footer{padding:48px 20px 24px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- ── NAVBAR ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://static.wixstatic.com/media/16bc2a_3ea02dd17ffe4ce08f44b77e73fc870f~mv2.png" alt="Un-conditional Inc Logo" class="logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="purpose.html">Our Purpose</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="events.html">Events</a></li>
+
+    <li><a href="sponsors.html">Sponsors</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="purpose.html">Our Purpose</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+
+  <a href="sponsors.html">Sponsors</a>
+  <a href="contact.html" class="m-cta">Contact Us</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="ph-grid"></div>
+  <div class="ph-orb"></div>
+  <div class="ph-big-letter">R</div>
+  <div class="ph-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,.65)">Resources</span>
+    </div>
+    <h1 class="ph-title">
+      Free <span class="pink">Resources</span><br>
+      <span class="outline">For Every Parent.</span>
+    </h1>
+    <p class="ph-subtitle">Everything you need to navigate health, education, life skills, and parenting — all in one place, always free.</p>
+  </div>
+</section>
+
+<!-- ── TABBED PILLARS ── -->
+<section class="s-tabs">
+  <div class="tabs-intro reveal">
+    <div class="tabs-intro-text">
+      <p class="sec-label">Our Framework</p>
+      <h2>Explore Our Four Pillars</h2>
+      
+    </div>
+    <div class="tab-pills">
+      <button class="tab-pill active" data-tab="health"> Health</button>
+      <button class="tab-pill" data-tab="edu"> Education</button>
+      <button class="tab-pill" data-tab="life"> Life Skills</button>
+      <button class="tab-pill" data-tab="parent"> Parenting</button>
+    </div>
+  </div>
+
+  <div class="tab-panels">
+
+    <!-- HEALTH -->
+    <div class="tab-panel active" id="panel-health">
+      <div class="panel-band health">
+        <div>
+          <p class="pb-label">H — Health</p>
+          <h2 class="pb-title">Your Body,<br>Your Wellness.</h2>
+          <p class="pb-sub">Physical and mental health resources designed specifically for pregnant teens and young parents. Because taking care of yourself is taking care of your baby.</p>
+        </div>
+        
+        <div class="pb-letter" style="color:rgba(232,53,122,1)">H</div>
+      </div>
+      <div class="res-grid">
+        <div class="res-card">
+          
+          <h3 class="rc-title">Unplanned Pregnancy Support</h3>
+          <p class="rc-text">Guidance, counseling pathways, and emotional support for teens navigating an unplanned pregnancy. You're not alone — we'll walk through this with you.</p>
+          <div class="rc-tags"><span class="rc-tag">Pregnancy</span><span class="rc-tag">Counseling</span></div>
+        </div>
+        <div class="res-card">
+          
+          <h3 class="rc-title">Mental Wellness</h3>
+          <p class="rc-text">Resources for managing postpartum emotions, stress, anxiety and building a healthy mental state. Young parents experience real emotional challenges — let's address them head-on.</p>
+          <div class="rc-tags"><span class="rc-tag">Mental Health</span><span class="rc-tag">Wellness</span></div>
+        </div>
+        <div class="res-card">
+         
+          <h3 class="rc-title">Nutrition Guidance</h3>
+          <p class="rc-text">Healthy eating tips for pregnant and nursing mothers, access to WIC resources, and meal planning basics for your growing family — without breaking the budget.</p>
+          <div class="rc-tags"><span class="rc-tag">Nutrition</span><span class="rc-tag">WIC</span></div>
+        </div>
+        <div class="res-card">
+          
+          <h3 class="rc-title">Developmental Milestones</h3>
+          <p class="rc-text">Track your child's development with confidence. Understanding what to expect — and when — gives young parents the edge they need to raise thriving children.</p>
+          <div class="rc-tags"><span class="rc-tag">Child Dev.</span><span class="rc-tag">Milestones</span></div>
+        </div>
+        <div class="res-card">
+         
+          <h3 class="rc-title">Healthcare Navigation</h3>
+          <p class="rc-text">Help finding prenatal care, pediatricians, and low-cost clinics in the Atlanta metro area. Navigating the healthcare system shouldn't be a barrier to your family's health.</p>
+          <div class="rc-tags"><span class="rc-tag">Prenatal Care</span><span class="rc-tag">Clinics</span></div>
+        </div>
+        <div class="res-card">
+          
+          <h3 class="rc-title">Family Planning</h3>
+          <p class="rc-text">Comprehensive, judgment-free family planning resources and reproductive health education to help young parents make informed decisions for their future.</p>
+          <div class="rc-tags"><span class="rc-tag">Reproductive Health</span><span class="rc-tag">Education</span></div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <p class="pf-note">All health resources are provided <strong>completely free</strong>. We partner with <strong>WIC – Cobb Douglas Public Health</strong> and local healthcare providers to connect you with the best care available.</p>
+        <a href="contact.html" class="btn-p" style="font-size:14px;padding:12px 24px">
+          Get Connected
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="tab-panel" id="panel-edu">
+      <div class="panel-band edu">
+        <div>
+          <p class="pb-label" style="color:var(--edu-c)">E — Education</p>
+          <h2 class="pb-title">Your Future<br>Starts Here.</h2>
+          <p class="pb-sub">Education is the bridge between where you are and where you want to be. We remove the barriers that keep teen parents from reaching their academic goals.</p>
+        </div>
+        
+        <div class="pb-letter" style="color:rgba(59,130,246,1)">E</div>
+      </div>
+      <div class="res-grid">
+        <div class="res-card edu">
+          
+          <h3 class="rc-title">High School Support</h3>
+          <p class="rc-text">Resources to help teen parents stay enrolled and graduate on time. From tutoring connections to flexible scheduling options — your diploma is within reach.</p>
+          <div class="rc-tags"><span class="rc-tag">High School</span><span class="rc-tag">Graduation</span></div>
+        </div>
+        <div class="res-card edu">
+          
+          <h3 class="rc-title">Post-Secondary Pathways</h3>
+          <p class="rc-text">College, vocational training, and certification programs that work for parents. Learn about financial aid, scholarships for teen parents, and flexible degree options.</p>
+          <div class="rc-tags"><span class="rc-tag">College</span><span class="rc-tag">Scholarships</span></div>
+        </div>
+        <div class="res-card edu">
+          
+          <h3 class="rc-title">Dropout Prevention</h3>
+          <p class="rc-text">Connecting at-risk teen parents with advocates, mentors, and school liaison programs that keep them engaged in education during one of the most challenging times of their lives.</p>
+          <div class="rc-tags"><span class="rc-tag">Mentorship</span><span class="rc-tag">Advocacy</span></div>
+        </div>
+        <div class="res-card edu">
+          
+          <h3 class="rc-title">Quality Child Care</h3>
+          <p class="rc-text">Access to affordable and subsidized childcare options so teen parents can stay in school. Finding safe, nurturing care for your child should never hold back your education.</p>
+          <div class="rc-tags"><span class="rc-tag">Child Care</span><span class="rc-tag">Subsidies</span></div>
+        </div>
+        <div class="res-card edu">
+          
+          <h3 class="rc-title">Online Learning Tools</h3>
+          <p class="rc-text">Curated digital learning platforms, free courses, and study apps designed for busy parents who learn on their schedule, not someone else's.</p>
+          <div class="rc-tags"><span class="rc-tag">E-Learning</span><span class="rc-tag">Flexible</span></div>
+        </div>
+        <div class="res-card edu">
+         
+          <h3 class="rc-title">Academic Advocacy</h3>
+          <p class="rc-text">Know your rights as a student parent. We help you advocate for accommodations, extended deadlines, and school policies that recognize your dual responsibilities.</p>
+          <div class="rc-tags"><span class="rc-tag">Rights</span><span class="rc-tag">Advocacy</span></div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <p class="pf-note">We partner with <strong>local schools, community colleges, and Boys & Girls Clubs</strong> to connect teen parents with academic support, tutoring, and scholarship opportunities.</p>
+        <a href="contact.html" class="btn-p" style="font-size:14px;padding:12px 24px;background:var(--edu-c);box-shadow:0 8px 24px rgba(59,130,246,.35)">
+          Find Support
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- LIFE SKILLS -->
+    <div class="tab-panel" id="panel-life">
+      <div class="panel-band life">
+        <div>
+          <p class="pb-label" style="color:var(--life-c)">L — Life Skills</p>
+          <h2 class="pb-title">Skills That<br>Last a Lifetime.</h2>
+          <p class="pb-sub">Real-world tools for navigating adulthood as a young parent — from managing money to building a career, we equip you with skills no classroom teaches.</p>
+        </div>
+        
+        <div class="pb-letter" style="color:rgba(16,185,129,1)">L</div>
+      </div>
+      <div class="res-grid">
+        <div class="res-card life">
+          
+          <h3 class="rc-title">Communication Skills</h3>
+          <p class="rc-text">Workshops and resources on effective communication — with partners, co-parents, employers, and healthcare providers. How you communicate shapes your entire world.</p>
+          <div class="rc-tags"><span class="rc-tag">Communication</span><span class="rc-tag">Workshops</span></div>
+        </div>
+        <div class="res-card life">
+          
+          <h3 class="rc-title">Time Management</h3>
+          <p class="rc-text">Practical strategies for juggling school, parenting, work, and self-care. Young parents who master their time master their future — we'll show you how.</p>
+          <div class="rc-tags"><span class="rc-tag">Productivity</span><span class="rc-tag">Planning</span></div>
+        </div>
+        <div class="res-card life">
+          
+          <h3 class="rc-title">Problem Solving</h3>
+          <p class="rc-text">Build critical thinking and decision-making skills. Learn frameworks for working through challenges — from childcare crises to difficult relationship decisions.</p>
+          <div class="rc-tags"><span class="rc-tag">Critical Thinking</span><span class="rc-tag">Decision Making</span></div>
+        </div>
+        <div class="res-card life">
+          
+          <h3 class="rc-title">Financial Literacy</h3>
+          <p class="rc-text">Budgeting, saving, credit basics, and financial planning for young families. The foundation of financial stability starts with knowing the rules of the money game.</p>
+          <div class="rc-tags"><span class="rc-tag">Budgeting</span><span class="rc-tag">Finance</span></div>
+        </div>
+        <div class="res-card life">
+
+          <h3 class="rc-title">Workforce Development</h3>
+          <p class="rc-text">Resume building, job interview prep, and career pathways for teen parents re-entering or entering the workforce for the first time. Your career story starts now.</p>
+          <div class="rc-tags"><span class="rc-tag">Career</span><span class="rc-tag">Employment</span></div>
+        </div>
+        <div class="res-card life">
+          
+          <h3 class="rc-title">Independent Living</h3>
+          <p class="rc-text">Navigation resources for housing assistance, utilities, transportation, and the basics of running a household — the adulting skills everyone needs but few are explicitly taught.</p>
+          <div class="rc-tags"><span class="rc-tag">Housing</span><span class="rc-tag">Independence</span></div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <p class="pf-note">Life skills workshops are offered <strong>free of charge</strong> through our community partners. Contact us to find out about upcoming workshops and training sessions near you.</p>
+        <a href="contact.html" class="btn-p" style="font-size:14px;padding:12px 24px;background:var(--life-c);box-shadow:0 8px 24px rgba(16,185,129,.35)">
+          Join a Workshop
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- PARENTING -->
+    <div class="tab-panel" id="panel-parent">
+      <div class="panel-band parent">
+        <div>
+          <p class="pb-label" style="color:var(--parent-c)">P — Parenting</p>
+          <h2 class="pb-title">Raising Kids<br>With Confidence.</h2>
+          <p class="pb-sub">Practical parenting guidance rooted in love, science, and community wisdom. Because being a great parent is a skill — and it can absolutely be learned.</p>
+        </div>
+        
+        <div class="pb-letter" style="color:rgba(245,158,11,1)">P</div>
+      </div>
+      <div class="res-grid">
+        <div class="res-card parent">
+          
+          <h3 class="rc-title">Parenting Best Practices</h3>
+          <p class="rc-text">Research-backed parenting techniques and approaches that help young parents build strong, healthy bonds with their children from day one.</p>
+          <div class="rc-tags"><span class="rc-tag">Best Practices</span><span class="rc-tag">Bonding</span></div>
+        </div>
+        <div class="res-card parent">
+          
+          <h3 class="rc-title">Positive Discipline</h3>
+          <p class="rc-text">Learn discipline strategies that guide and teach rather than punish. Positive discipline builds trust, respect, and emotional regulation in growing children.</p>
+          <div class="rc-tags"><span class="rc-tag">Discipline</span><span class="rc-tag">Behavior</span></div>
+        </div>
+        <div class="res-card parent">
+          
+          <h3 class="rc-title">Early Child Development</h3>
+          <p class="rc-text">Understand the critical early years. Resources on brain development, language acquisition, play-based learning, and building secure attachment with your child.</p>
+          <div class="rc-tags"><span class="rc-tag">Development</span><span class="rc-tag">Early Years</span></div>
+        </div>
+        <div class="res-card parent">
+         
+          <h3 class="rc-title">Healthy Relationships</h3>
+          <p class="rc-text">Navigate co-parenting, family dynamics, and romantic relationships as a young parent. Healthy relationships at home create healthy environments for children to thrive.</p>
+          <div class="rc-tags"><span class="rc-tag">Co-Parenting</span><span class="rc-tag">Relationships</span></div>
+        </div>
+        <div class="res-card parent">
+          
+          <h3 class="rc-title">Legitimation & Legal Rights</h3>
+          <p class="rc-text">Understand the legal aspects of establishing paternity, legitimation, custody, and parental rights in Georgia. Know your rights — and your child's rights.</p>
+          <div class="rc-tags"><span class="rc-tag">Legal</span><span class="rc-tag">Paternity</span></div>
+        </div>
+        <div class="res-card parent">
+          
+          <h3 class="rc-title">Peer Support Groups</h3>
+          <p class="rc-text">Connect with other teen parents going through similar experiences. Shared stories, peer advice, and a judgment-free community can make all the difference.</p>
+          <div class="rc-tags"><span class="rc-tag">Community</span><span class="rc-tag">Peer Support</span></div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <p class="pf-note">Our parenting resources are grounded in <strong>evidence-based best practices</strong>. We believe parents desire to do their best — and their children deserve the best.</p>
+        <a href="contact.html" class="btn-p" style="font-size:14px;padding:12px 24px;background:var(--parent-c);box-shadow:0 8px 24px rgba(245,158,11,.35)">
+          Learn More
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /tab-panels -->
+</section>
+
+<!-- ── ALL FREE BANNER ── -->
+<section class="s-free">
+  <div class="free-banner reveal">
+    <div>
+      <p class="fb-label">Our Promise</p>
+      <h2 class="fb-title">Every Resource.<br>Always Free.</h2>
+      <p class="fb-sub">Un-conditional Inc. believes that cost should never be a barrier to support. Every program, workshop, and resource we offer is completely free for teen parents and families.</p>
+    </div>
+    <a href="contact.html" class="btn-white">
+      Access Resources
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="s-how">
+  <div class="how-orb"></div>
+  <div class="how-header reveal">
+    <p class="sec-label">Getting Started</p>
+    <h2 class="sec-heading">How to Access Our Resources</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal d1">
+      <div class="step-num">1</div>
+      <h3 class="step-title">Reach Out</h3>
+      <p class="step-text">Contact us by phone, email, or through our website. No forms, no fees, no judgment — just a conversation.</p>
+    </div>
+    <div class="step reveal d2">
+      <div class="step-num">2</div>
+      <h3 class="step-title">Get Connected</h3>
+      <p class="step-text">We'll connect you with the resources, programs, and community partners that match your specific needs and goals.</p>
+    </div>
+    <div class="step reveal d3">
+      <div class="step-num">3</div>
+      <h3 class="step-title">Attend & Engage</h3>
+      <p class="step-text">Join workshops, events, and one-on-one sessions. Learn at your own pace, on your own schedule, in a safe space.</p>
+    </div>
+    <div class="step reveal d4">
+      <div class="step-num">4</div>
+      <h3 class="step-title">Grow & Thrive</h3>
+      <p class="step-text">Apply what you've learned, lean on your community, and watch yourself grow into the confident parent you're meant to be.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERS ── 
+<section class="s-partners">
+  <div class="partners-header reveal">
+    <p class="sec-label">Our Partners</p>
+    <h2 class="sec-heading" style="font-size:clamp(26px,3vw,40px)">Resource Partners &amp; Sponsors</h2>
+  </div>
+  <div class="partner-scroll reveal d1">
+    <div class="partner-chip">Michael A. Grant Boys &amp; Girls Club</div>
+    <div class="partner-chip">WIC – Cobb Douglas Public Health</div>
+    <div class="partner-chip">S&amp;STBW – Chicago, IL</div>
+    <div class="partner-chip">Troy L. Jones Foundation</div>
+    <div class="partner-chip">Costco – Dallas, GA</div>
+    <div class="partner-chip">Dancing with Distinction</div>
+    <div class="partner-chip">Dunkin' (Corporate) – Lithia Springs, GA</div>
+    <div class="partner-chip">Un-conditional Inc. Community Network</div>
+    <div class="partner-chip">Atlanta Area Schools</div>
+    <div class="partner-chip">Georgia Dept. of Community Affairs</div>
+  </div>
+</section> -->
+
+<!-- ── CTA ── -->
+<section class="s-cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner reveal">
+    <h2 class="cta-h">Ready to <span>Get Started?</span></h2>
+    <p class="cta-sub">Reach out today and let us connect you with the resources, workshops, and community you deserve — completely free.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn-p">
+        Contact Us Today
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="about.html" class="btn-g">Learn About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-brand-logo">
+         <img src="https://static.wixstatic.com/media/16bc2a_3ea02dd17ffe4ce08f44b77e73fc870f~mv2.png" alt="Un-conditional Inc Logo" class="logo-img">
+      </div>
+      <p>Providing resources and support to pregnant and parenting teens since 2015. Empowering young parents to thrive — unconditionally.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="purpose.html">Our Purpose</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Media</h4>
+      <ul>
+A
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:4044803113">404-480-3113</a></li>
+        <li><a href="mailto:info@un-conditionalinc.org">info@un-conditionalinc.org</a></li>
+        <li><a href="#">P.O. Box 723891, Atlanta GA 31139</a></li>
+        <li><a href="https://www.un-conditionalinc.org" target="_blank">un-conditionalinc.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 Un-conditional Inc. All rights reserved. 501(c)(3) Nonprofit Organization • EIN: 33-2817659.</p>
+    <div class="socials">
+      <a href="#" class="soc-a">f</a>
+      <a href="#" class="soc-a">ig</a>
+     
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-6}px,${my-6}px)`;});
+  (function a(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;curR.style.transform=`translate(${rx-18}px,${ry-18}px)`;requestAnimationFrame(a);})();
+
+  // Navbar scroll
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+  // Mobile menu
+  const ham=document.getElementById('ham'),mm=document.getElementById('mobileMenu');
+  ham.addEventListener('click',()=>{ham.classList.toggle('open');mm.classList.toggle('open');});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mm.classList.remove('open');}));
+
+  // Tabs
+  const pills=document.querySelectorAll('.tab-pill');
+  const panels=document.querySelectorAll('.tab-panel');
+  pills.forEach(pill=>{
+    pill.addEventListener('click',()=>{
+      const t=pill.dataset.tab;
+      pills.forEach(p=>p.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      const target=document.getElementById('panel-'+t);
+      if(target){
+        target.classList.add('active');
+        // animate cards in
+        target.querySelectorAll('.res-card').forEach((c,i)=>{
+          c.style.opacity='0';c.style.transform='translateY(20px)';
+          setTimeout(()=>{c.style.transition='opacity .4s ease,transform .4s ease';c.style.opacity='1';c.style.transform='translateY(0)';},i*60);
+        });
+      }
+    });
+  });
+
+  // Scroll reveal
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
